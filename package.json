@@ -6,7 +6,8 @@
   "scripts": {
     "build": "rimraf ./build && tsc",
     "start": "cross-env NODE_ENV=production ts-node build/app.js",
-    "dev": "nodemon src/app.ts"
+    "dev": "nodemon src/app.ts",
+    "lint": "eslint . --ext .ts"
   },
   "author": "Klimov Georgii aka TraneDev",
   "license": "ISC",
