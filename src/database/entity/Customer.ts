@@ -1,19 +1,19 @@
-import {BaseEntity, Column, Entity, PrimaryColumn} from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Customer extends BaseEntity{
-    @PrimaryColumn()
-    id: number;
+export class Customer extends BaseEntity {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    name: string
+  @Column()
+  name: string;
 
-    @Column()
-    email: string;
+  @Column()
+  email: string;
 
-    @Column()
-    phone: number;
+  @Column()
+  phone: number;
 
-    @Column({ nullable: false})
-    hash_pwd: string;
+  @Column()
+  hash_pwd: string;
 }
