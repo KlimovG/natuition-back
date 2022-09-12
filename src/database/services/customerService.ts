@@ -22,7 +22,7 @@ export class CustomerService {
   }
 
   async create(createCustomerInput: CreateCustomerInput): Promise<Customer> {
-    const newCustomer = new Customer();
+    const newCustomer = Customer.create();
     Object.assign(newCustomer, createCustomerInput);
     await newCustomer.save();
     return newCustomer;
