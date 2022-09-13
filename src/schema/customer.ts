@@ -13,7 +13,7 @@ export class Customer {
   email: string;
 
   @Field()
-  phone: number;
+  phone: string;
 
   @Field()
   hash_pwd: string;
@@ -30,8 +30,7 @@ export class CreateCustomerInput implements Partial<Customer> {
   email: string;
 
   @Field()
-  @Length(2, 15)
-  phone: number;
+  phone: string;
 
   @Field()
   @Length(2, 15)
@@ -48,8 +47,8 @@ export class UpdateCustomerInput implements Partial<Customer> {
   email?: string;
 
   @Field({ nullable: true })
-  @Length(2, 15)
-  phone?: number;
+  @Length(2, 20)
+  phone?: string;
 
   @Field({ nullable: true })
   @Length(2, 15)
