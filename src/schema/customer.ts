@@ -37,6 +37,7 @@ export class CreateCustomerInput implements Partial<Customer> {
   hash_pwd: string;
 }
 
+@InputType()
 export class UpdateCustomerInput implements Partial<Customer> {
   @Field({ nullable: true })
   @Length(2, 50)
