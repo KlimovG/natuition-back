@@ -1,5 +1,9 @@
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
-import { CreateCustomerInput, Customer } from '../schema/customer';
+import {
+  CreateCustomerInput,
+  Customer,
+  UpdateCustomerInput,
+} from '../schema/customer';
 import { Service } from 'typedi';
 import { CustomerService } from '../database/services/customerService';
 
@@ -23,5 +27,18 @@ export class CustomerResolver {
     @Arg('CustomerInput') createCustomerInput: CreateCustomerInput,
   ): Promise<Customer> {
     return await this.customerService.create(createCustomerInput);
+  }
+
+  @Mutation((returns) => Customer)
+  async updateCustomer(
+    @Arg('id') id: number,
+    @Arg('CustomerInput') updateCustomerInput: UpdateCustomerInput,
+  ): Promise<Customer> {
+    return await this.customerService.update(id, updateCustomerInput);
+  }
+
+  @Mutation((returns) => Boolean)
+  async deleteCustomer(@Arg('id') id: number): Promise<boolean> {
+    return await this.customerService.delete(id);
   }
 }
