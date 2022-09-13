@@ -8,7 +8,7 @@
     "start": "cross-env NODE_ENV=production ts-node build/app.js",
     "dev": "nodemon src/app.ts",
     "lint": "eslint . --ext .ts",
-    "typeorm:cli": "ts-node ./node_modules/typeorm/cli -f ./ormconfig.ts",
+    "typeorm:cli": "ts-node ./node_modules/typeorm/cli -f src/core/config/orm.config.ts",
     "create-table": "npm run typeorm:cli -- migration:run",
     "drop-table": "npm run typeorm:cli -- migration:revert"
   },
@@ -29,6 +29,7 @@
     "class-validator": "^0.13.2",
     "express": "^4.18.1",
     "graphql": "^15.7.2",
+    "logform": "^2.4.2",
     "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.1.1",
