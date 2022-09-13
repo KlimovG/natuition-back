@@ -1,4 +1,4 @@
-import { DataSource, DataSourceOptions } from 'typeorm';
+import { DataSourceOptions } from 'typeorm';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -21,5 +21,3 @@ export const dataSourceOptions: DataSourceOptions = {
   migrations: [`${dir}/database/migrations/**/*.{ts,js}`],
   subscribers: [`${dir}/database/subscriber/**/*.{ts,js}`],
 };
-
-const dataSource = new DataSource(dataSourceOptions);
