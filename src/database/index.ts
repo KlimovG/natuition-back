@@ -1,4 +1,4 @@
-import { dataSourceOptions } from '../../ormconfig';
+import { dataSourceOptions } from '../core/config';
 import { DataSource } from 'typeorm';
 
 const initializeDB = async (): Promise<void> => {
