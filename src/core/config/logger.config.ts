@@ -1,16 +1,6 @@
-import { format, LoggerOptions } from 'winston';
+import { LoggerOptions, transports } from 'winston';
 
-export const logger: LoggerOptions = {
+export const loggerOptions: LoggerOptions = {
+  transports: [new transports.Console()],
   exitOnError: false,
-  level: 'info',
-  format: format.combine(
-    format.colorize(),
-    format.align(),
-    format.timestamp({
-      format: 'YY-MM-DD HH:mm:ss',
-    }),
-    format.errors({ stack: true }),
-    format.splat(),
-    format.json({ space: 3 }),
-  ),
 };
