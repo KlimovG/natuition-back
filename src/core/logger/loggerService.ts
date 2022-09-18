@@ -3,7 +3,7 @@ import winston, { format, Logger as WinstonLogger, transports } from 'winston';
 import { ILogger } from './logger.interface';
 
 @Service()
-export class Logger implements ILogger {
+export class LoggerService implements ILogger {
   private logger: WinstonLogger;
 
   constructor() {}
@@ -33,7 +33,7 @@ export class Logger implements ILogger {
           info.level = info.level.toUpperCase();
           return info;
         })(),
-        format.label({ label: meta.label, message: true }),
+        format.label({ label: meta?.label, message: true }),
         format.colorize({ colors: { info: 'yellow' }, all: true }),
         format.errors({ stack: true }),
         format.json({ space: 3 }),
