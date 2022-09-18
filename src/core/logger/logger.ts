@@ -1,5 +1,5 @@
 import { Service } from 'typedi';
-import winston, { format, Logger as WinstonLogger } from 'winston';
+import winston, { format, Logger as WinstonLogger, transports } from 'winston';
 import { ILogger } from './logger.interface';
 
 @Service()
@@ -10,7 +10,10 @@ export class Logger implements ILogger {
 
   debug(message: string): void {}
 
-  error(message: string): void {}
+  error(message: string, meta?: any): void {
+    this.logger = this.log(meta);
+    this.logger.error(message);
+  }
 
   info(message: string, meta?: any): void {
     this.logger = this.log(meta);
@@ -21,6 +24,7 @@ export class Logger implements ILogger {
 
   log(meta?: any): winston.Logger {
     return winston.createLogger({
+      exitOnError: false,
       format: format.combine(
         format.timestamp({
           format: 'DD-MM-YYYY HH:mm:ss',
@@ -29,13 +33,15 @@ export class Logger implements ILogger {
           info.level = info.level.toUpperCase();
           return info;
         })(),
+        format.label({ label: meta.label, message: true }),
         format.colorize({ colors: { info: 'yellow' }, all: true }),
         format.errors({ stack: true }),
         format.json({ space: 3 }),
         format.printf(({ timestamp, level, message }) => {
-          return `[${timestamp}] [${meta}] ${level}: ${message} `;
+          return `${timestamp} ${level}: ${message} `;
         }),
       ),
+      transports: [new transports.Console()],
     });
   }
 }
