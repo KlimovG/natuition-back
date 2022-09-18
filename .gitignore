@@ -39,4 +39,5 @@ Temporary Items
 node_modules
 dist
 .idea/
-tslint-to-eslint-config.log
+
+.env

@@ -1,10 +1,6 @@
-import express from 'express';
+import App from './core/app';
+import { LoggerService } from './core/logger/loggerService';
+import { Container } from 'typedi';
 
-const app = express();
-const port = 3000;
-app.get('/', (req, res) => {
-    res.send('Nodemon works bithces!');
-});
-app.listen(port, () => {
-    return console.log(`server is listening on ${port}`);
-}).on("error", err => console.log(err));
+const logger = Container.get(LoggerService);
+App.start().catch((error) => logger.error(error));
