@@ -3,7 +3,7 @@ import { Customer } from '../entity/Customer';
 import {
   CreateCustomerInput,
   UpdateCustomerInput,
-} from '../../schema/customer';
+} from '../../../schema/customer';
 
 @Service()
 export class CustomerService {

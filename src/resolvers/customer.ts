@@ -5,7 +5,7 @@ import {
   UpdateCustomerInput,
 } from '../schema/customer';
 import { Service } from 'typedi';
-import { CustomerService } from '../database/services/customerService';
+import { CustomerService } from '../core/database/services/customerService';
 
 @Service()
 @Resolver((of) => Customer)
